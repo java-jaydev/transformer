@@ -4,18 +4,83 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transformer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #output {
+        margin-top: 20px;
+        border-top: 2px solid #007bff;
+        padding-top: 20px;
+      }
+
+      #output p {
+        margin-bottom: 10px;
+      }
+    </style>
   </head>
   <body>
-    <div>
-      <label for="rule">규칙 선택(1~5): </label>
-      <input type="text" id="rule" />
+    <div class="container">
+      <h1>Text Transformer</h1>
+      <div>
+        <label for="rule">Select Rule (1~5):</label>
+        <input type="text" id="rule" />
+      </div>
+      <div>
+        <label for="text">Enter Text:</label><br />
+        <textarea id="text" rows="10" cols="50"></textarea>
+      </div>
+      <button onclick="transformText()">Transform</button>
+      <div id="output"></div>
     </div>
-    <div>
-      <label for="text">드래그 앤 드롭 텍스트를 입력하세요:</label><br />
-      <textarea id="text" rows="10" cols="50"></textarea>
-    </div>
-    <button onclick="transformText()">변환하기</button>
-    <div id="output"></div>
 
     <script>
       const HANGEUL1 = [
@@ -86,7 +151,7 @@
               .join(". ");
             break;
           default:
-            transformedParagraph = "규칙 없음";
+            transformedParagraph = "No rule selected";
         }
 
         return transformedParagraph;
@@ -147,7 +212,7 @@
         let output = "";
 
         for (const paragraph of paragraphs) {
-          output += transformParagraph(paragraph, rule) + "<br>";
+          output += "<p>" + transformParagraph(paragraph, rule) + "</p>";
         }
 
         document.getElementById("output").innerHTML = output;
