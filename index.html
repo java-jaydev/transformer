@@ -72,7 +72,13 @@
       <h1>Text Transformer</h1>
       <div>
         <label for="rule">Select Rule (1~5):</label>
-        <input type="text" id="rule" />
+        <select id="rule">
+          <option value="1">Rule 1</option>
+          <option value="2">Rule 2</option>
+          <option value="3">Rule 3</option>
+          <option value="4">Rule 4</option>
+          <option value="5">Rule 5</option>
+        </select>
       </div>
       <div>
         <label for="text">Enter Text:</label><br />
@@ -210,6 +216,12 @@
         const text = document.getElementById("text").value;
         const paragraphs = splitParagraphs(text);
         let output = "";
+
+        if (paragraphs.length === 0) {
+          document.getElementById("output").innerHTML = "No text entered";
+          alert("No text entered");
+          return;
+        }
 
         for (const paragraph of paragraphs) {
           output += "<p>" + transformParagraph(paragraph, rule) + "</p>";
