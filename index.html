@@ -65,10 +65,18 @@
       #output p {
         margin-bottom: 10px;
       }
+
+      img {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        width: 300px;
+      }
     </style>
   </head>
   <body>
     <div class="container">
+      <img src="./logo.jpg" alt="Logo" />
       <h1>Text Transformer</h1>
       <div>
         <label for="rule">Select Rule (1~5):</label>
@@ -179,7 +187,7 @@
         if (words.length >= 3) {
           [words[1], words[2]] = [words[2], words[1]]; // swap words at index 1 and 2
         }
-        if (words.length >= 7) {          
+        if (words.length >= 7) {
           [words[5], words[6]] = [words[6], words[5]]; // swap words at index 5 and 6
         }
         return words.join(" ");
