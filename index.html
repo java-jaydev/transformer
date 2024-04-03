@@ -165,8 +165,10 @@
 
       function transformSentence1(sentence, sentenceIndex) {
         const words = sentence.split(" ");
-        if (words.length >= 6) {
+        if (words.length >= 2) {
           [words[0], words[1]] = [words[1], words[0]]; // swap words at index 0 and 1
+        }
+        if (words.length >= 6) {
           [words[4], words[5]] = [words[5], words[4]]; // swap words at index 4 and 5
         }
         return words.join(" ");
@@ -174,8 +176,10 @@
 
       function transformSentence2(sentence, sentenceIndex) {
         const words = sentence.split(" ");
-        if (words.length >= 7) {
+        if (words.length >= 3) {
           [words[1], words[2]] = [words[2], words[1]]; // swap words at index 1 and 2
+        }
+        if (words.length >= 7) {          
           [words[5], words[6]] = [words[6], words[5]]; // swap words at index 5 and 6
         }
         return words.join(" ");
